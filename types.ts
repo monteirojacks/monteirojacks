@@ -45,11 +45,20 @@ export interface MonthlySummaries {
   [monthId: number]: string;
 }
 
-export type ViewState = 'LOGIN' | 'COVER' | 'MONTH_INTRO' | 'JOURNAL' | 'SETTINGS' | 'GALLERY';
+export type ViewState = 
+  | 'LOGIN' 
+  | 'COVER' 
+  | 'PREP_FLOW'      // New: 2025 Preparation Guide
+  | 'LOCKED_2026'    // New: Locked screen for 2026 content
+  | 'MONTH_INTRO' 
+  | 'JOURNAL' 
+  | 'SETTINGS' 
+  | 'GALLERY';
 
 export interface AppState {
   currentMonthId: number;
   currentEntryIndex: number; // Index within the month's days array
   view: ViewState;
   userName?: string | null;
+  prepStep?: number; // Tracks step in PREP_FLOW (1-7)
 }
